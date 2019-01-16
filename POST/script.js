@@ -1,25 +1,17 @@
 function sendRequest() {
     console.log("Send");
     var xhr = new XMLHttpRequest();
-    var url = "https://github.com/AlionaSauchuk/HW06/blob/master/db.json";
+    var url = "http://localhost:3000/data";
     xhr.open("POST", url, true);
-    xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+    xhr.setRequestHeader('Content-type', "application/json");
     xhr.onreadystatechange = function () {
-        if (xhr.readyState === 4 && xhr.status === 200) {
-            alert(xhr.responseText);
-            /*
-            var json = JSON.parse(xhr.responseText);
-            console.log(json);
-            */
+        if (xhr.readyState === 4 && xhr.status === 200) {          
         }
     };
     var formElements=document.getElementById("createForm").elements;    
-        var obj={};
-        for (var i=0; i<formElements.length; i++){
-            obj[formElements[i].name]=formElements[i].value;
-        }
-
-    var data = JSON.stringify(obj);
-    console.log(data);
-    xhr.send(data);
+    var data={};
+    for (var i=0; i<formElements.length; i++){
+        data[formElements[i].name]=formElements[i].value;
+    }
+    xhr.send(JSON.stringify(data));
 };
