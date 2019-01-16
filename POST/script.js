@@ -1,5 +1,4 @@
 function sendRequest() {
-    console.log("Send");
     var xhr = new XMLHttpRequest();
     var url = "http://localhost:3000/data";
     xhr.open("POST", url, true);
