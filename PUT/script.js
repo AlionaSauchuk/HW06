@@ -17,3 +17,10 @@ function sendRequest() {
     xhr.send(JSON.stringify(data));
     
 };
+
+
+(function(){
+    var itemId = sessionStorage.getItem('idUpdate');
+    document.getElementById("id").value = itemId;
+
+})();

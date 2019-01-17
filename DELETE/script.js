@@ -1,19 +1,20 @@
 function sendRequest() {
     var xhr = new XMLHttpRequest();
     var url = "http://localhost:3000/data";
-    var formElements=document.getElementById("deleteForm").elements;    
-    var data={};
-    for (var i=0; i<formElements.length; i++){
-        data[formElements[i].name]=formElements[i].value;
-    }
+    var itemId = sessionStorage.getItem('idDelete');
 
-    xhr.open("DELETE", url+'/'+data.id, true);
+    xhr.open("DELETE", url+'/'+itemId, true);
     xhr.setRequestHeader('Content-type', 'application/json');
     xhr.onreadystatechange = function () {
         if (xhr.readyState === 4 && xhr.status === 200) {        
         }
     };
 
-    xhr.send(JSON.stringify(data));
-    
+    xhr.send();
 };
+
+
+(function(){
+    var itemId = sessionStorage.getItem('idDelete');
+    document.getElementById("id").value = itemId;
+})()
